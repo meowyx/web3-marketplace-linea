@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useAccount, useWalletClient } from "wagmi";
 import { parseUnits, formatUnits } from "viem";
 import { CONTRACT_ADDRESS, ABI as ABI_STRING_ARRAY } from "../../constants";
-import { client } from "@/providers/WagmiProvider"; // Ensure correct path
-import { ConnectButton } from "@consensys/connect-button";
+import { client } from "@/providers/WagmiProvider";
+import { ConnectWalletButton } from "../app/components/ConnectButton";
 
 export default function Home() {
   const { isConnected, address } = useAccount();
@@ -126,7 +126,7 @@ export default function Home() {
   return (
     <main className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Marketplace</h1>
-      <ConnectButton />
+      <ConnectWalletButton />
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-2">List a New Item</h2>
         <div className="flex space-x-2">
