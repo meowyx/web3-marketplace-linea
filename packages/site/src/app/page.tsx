@@ -12,17 +12,12 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  const { address } = useAccount();
+  const { isConnected, address } = useAccount();
   const { data: walletClient } = useWalletClient();
   const [items, setItems] = useState<any[]>([]);
   const [ownedItems, setOwnedItems] = useState<any[]>([]);
   const [newItemName, setNewItemName] = useState("");
   const [newItemPrice, setNewItemPrice] = useState("");
-
-  useEffect(() => {
-    loadItems();
-    loadOwnedItems();
-  }, []);
 
   const loadItems = async () => {
     try {
@@ -90,7 +85,12 @@ export default function Home() {
       console.error("Error loading owned items:", error);
     }
   };
-
+  useEffect(() => {
+    if (isConnected) {
+      loadItems();
+      loadOwnedItems();
+    }
+  }, [isConnected]);
   const listItem = async () => {
     try {
       if (!walletClient) return;
@@ -132,7 +132,7 @@ export default function Home() {
       <h1 className="text-xl font-semibold mb-4">
         <span>
           {" "}
-          <CubeIcon className="mr-2 h-4 w-4" /> marketplace⚡
+          <CubeIcon className="mr-2 h-4 w-4" /> marketplace
         </span>
       </h1>
       <span className="flex justify-end">
