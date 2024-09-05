@@ -1,6 +1,8 @@
 "use client";
 
 import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { Button } from "@/components/ui/button";
+import { PersonIcon, ExitIcon } from "@radix-ui/react-icons";
 
 export const ConnectWalletButton = () => {
   const { connectors, connect } = useConnect();
@@ -17,11 +19,22 @@ export const ConnectWalletButton = () => {
   };
 
   return (
-    <button
+    <Button
       onClick={handleConnect}
-      className="bg-gray-800 font-sans text-white font-medium py-2 px-4 rounded hover:bg-opacity-80 duration-200 hover:shadow-xl"
+      variant="outline"
+      className=" border-2 border-darkBlack text-darkBlack hover:bg-darkBlack hover:text-lightWhite py-2 px-4 rounded duration-200 hover:shadow-xl"
     >
-      {isConnected ? "Disconnect" : "Connect Wallet"}
-    </button>
+      {isConnected ? (
+        <>
+          <ExitIcon className="mr-2 h-4 w-4" />
+          Disconnect
+        </>
+      ) : (
+        <>
+          <PersonIcon className="mr-2 h-4 w-4" />
+          Connect Wallet
+        </>
+      )}
+    </Button>
   );
 };
