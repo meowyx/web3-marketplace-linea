@@ -13,3 +13,18 @@ node_modules
 /coverage
 /coverage.json
 .DS_Store
+
+
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+
+# Ignition files
+ignition/deployments
+./ignition/deployments/chain-31337
+
+# Build info
+buildinfo
