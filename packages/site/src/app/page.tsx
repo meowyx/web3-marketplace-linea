@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  const { isConnected, address } = useAccount();
+  const { address } = useAccount();
   const { data: walletClient } = useWalletClient();
   const [items, setItems] = useState<any[]>([]);
   const [ownedItems, setOwnedItems] = useState<any[]>([]);
@@ -126,84 +126,6 @@ export default function Home() {
       console.error("Error purchasing item:", error);
     }
   };
-
-  // return (
-  //   <main className="container mx-auto p-4">
-  //     <h1 className="text-2xl font-bold mb-4">Marketplace</h1>
-  //     <span className="flex justify-end">
-  //       <ConnectWalletButton />
-  //     </span>
-  //     <section className="mb-8">
-  //       <h2 className="text-xl font-semibold mb-2">List a New Item</h2>
-  //       <div className="flex space-x-2">
-  //         <input
-  //           type="text"
-  //           placeholder="Item Name"
-  //           value={newItemName}
-  //           onChange={(e) => setNewItemName(e.target.value)}
-  //           className="border p-2 flex-1"
-  //         />
-  //         <input
-  //           type="text"
-  //           placeholder="Price in ETH"
-  //           value={newItemPrice}
-  //           onChange={(e) => setNewItemPrice(e.target.value)}
-  //           className="border p-2 flex-1"
-  //         />
-  //         <button onClick={listItem} className="bg-blue-500 text-white p-2">
-  //           List Item
-  //         </button>
-  //       </div>
-  //     </section>
-
-  //     <section className="mb-8">
-  //       <h2 className="text-xl font-semibold mb-2">Available Items</h2>
-  //       <ul className="space-y-4">
-  //         {items.map((item) => (
-  //           <li key={item.id} className="border p-4">
-  //             <p>
-  //               <strong>Name:</strong> {item.name}
-  //             </p>
-  //             <p>
-  //               <strong>Price:</strong> {item.price} ETH
-  //             </p>
-  //             <p>
-  //               <strong>Owner:</strong> {item.owner}
-  //             </p>
-  //             {!item.isSold &&
-  //               item.owner.toLowerCase() !== address?.toLowerCase() && (
-  //                 <button
-  //                   onClick={() => purchaseItem(item.id, item.price)}
-  //                   className="bg-green-500 text-white p-2 mt-2"
-  //                 >
-  //                   Purchase
-  //                 </button>
-  //               )}
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </section>
-
-  //     <section>
-  //       <h2 className="text-xl font-semibold mb-2">Your Owned Items</h2>
-  //       <ul className="space-y-4">
-  //         {ownedItems.map((item) => (
-  //           <li key={item.id} className="border p-4">
-  //             <p>
-  //               <strong>Name:</strong> {item.name}
-  //             </p>
-  //             <p>
-  //               <strong>Price:</strong> {item.price} ETH
-  //             </p>
-  //             <p>
-  //               <strong>Owner:</strong> {item.owner}
-  //             </p>
-  //           </li>
-  //         ))}
-  //       </ul>
-  //     </section>
-  //   </main>
-  // );
 
   return (
     <main className="container mx-auto p-4">
