@@ -37,7 +37,7 @@ This will install the necessary dependencies for both the frontend and the block
 
 ```bash
 packages
-├── site          # Frontend built with Next.js, Tailwind CSS, and ShadCN UI
+├── site          # Frontend built with Next.js, Tailwind CSS, and ShadcnUI
 └── blockchain    # Smart contracts using Hardhat
 
 ```
